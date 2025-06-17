@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: ecommerce-api
+    runtime: node
+    buildCommand: npm install
+    startCommand: node index.js
+    envVars:
+      - key: MONGO_DB
+        value: mongodb+srv://outegnitabdellatif:48128288@cluster0.zyfowvb.mongodb.net/
+      - key: TOKEN_SECURITY
+        value: 4812828848128288 # Render requires a fixed port (not necessary for Node 18+)
+      - key: TOKEN_NAME
+        value: TOKEN_ACCESSY
