@@ -34,7 +34,13 @@ const signinFunc = async (req, res, next) => {
     const { password: pass, ...rest } = validateEmail._doc;
     const TOKEN = JWT.sign({ id: rest._id }, process.env.TOKEN_SECURITY);
     res
-      .cookie(process.env.TOKEN_NAME, TOKEN, { httpOnly: true })
+      .cookie(process.env.TOKEN_NAME, TOKEN, {
+        httpOnly: true,
+        secure: true, // Requires HTTPS
+        sameSite: "none", // Crucial for cross-site cookies
+        domain: ".onrender.com", // Note the leading dot
+        maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+      })
       .status(200)
       .json({ msg: "loged in successfully!!", data: rest });
   } catch (error) {
@@ -50,7 +56,13 @@ const signinGoogleFunc = async (req, res, next) => {
       const { password: pass, ...rest } = validateEmail._doc;
       const TOKEN = JWT.sign({ id: rest._id }, process.env.TOKEN_SECURITY);
       res
-        .cookie(process.env.TOKEN_NAME, TOKEN, { httpOnly: true })
+        .cookie(process.env.TOKEN_NAME, TOKEN, {
+          httpOnly: true,
+          secure: true, // Requires HTTPS
+          sameSite: "none", // Crucial for cross-site cookies
+          domain: ".onrender.com", // Note the leading dot
+          maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+        })
         .status(200)
         .json({ msg: "loged in successfully!!", data: rest });
     } else {
@@ -66,7 +78,13 @@ const signinGoogleFunc = async (req, res, next) => {
       const { password: pass, ...rest } = SET_DATA._doc;
       const TOKEN = JWT.sign({ id: rest._id }, process.env.TOKEN_SECURITY);
       res
-        .cookie(process.env.TOKEN_NAME, TOKEN, { httpOnly: true })
+        .cookie(process.env.TOKEN_NAME, TOKEN, {
+          httpOnly: true,
+          secure: true, // Requires HTTPS
+          sameSite: "none", // Crucial for cross-site cookies
+          domain: ".onrender.com", // Note the leading dot
+          maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+        })
         .status(200)
         .json({ msg: "loged in successfully!!", data: rest });
     }
