@@ -7,7 +7,12 @@ const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 require("dotenv").config();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://ecofront.onrender.com", // your frontend URL
+    credentials: true, // allow cookies to be sent
+  })
+);
 app.use(express.json());
 app.use(cookieParser());
 app.use("/api/Auth", Authrouter);
