@@ -38,7 +38,6 @@ const signinFunc = async (req, res, next) => {
         httpOnly: true,
         secure: true, // Requires HTTPS
         sameSite: "none", // Crucial for cross-site cookies
-        domain: "ecofront.onrender.com", // Note the leading dot
         path: "/",
         maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
       })
@@ -61,7 +60,6 @@ const signinGoogleFunc = async (req, res, next) => {
           httpOnly: true,
           secure: true, // Requires HTTPS
           sameSite: "none", // Crucial for cross-site cookies
-          domain: "ecofront.onrender.com", // Note the leading dot
           path: "/",
           maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
         })
@@ -84,7 +82,6 @@ const signinGoogleFunc = async (req, res, next) => {
           httpOnly: true,
           secure: true, // Requires HTTPS
           sameSite: "none", // Crucial for cross-site cookies
-          domain: "ecofront.onrender.com", // Note the leading dot
           path: "/",
           maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
         })
